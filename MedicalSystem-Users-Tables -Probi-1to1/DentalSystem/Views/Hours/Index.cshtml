@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DentalSystem.Models.Hour.AllHoursVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBusy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorFullName)
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreeHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBusy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorFullName)
+            </td>
+            
+            <td>
+                @if (!item.IsBusy)
+                {
+                <a asp-action="Create" asp-controller="Reservations" asp-route-id="@item.Id">Reserve</a> 
+                }
+                
+               | <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
