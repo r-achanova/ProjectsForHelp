@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MoreUsersApp.Models.Dog.DogListVM>
+
+<div class="row">
+    @foreach (var dog in Model)
+    {
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img class="card-img-top" src="@dog.Picture" alt="@dog.Name @dog.Age - @dog.BreedName" >
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@dog.Name @dog.Age - @dog.BreedName</h5>
+                    <a asp-controller="Dogs" asp-action="Details" asp-route-id="@dog.Id" class="btn btn-primary">View Dogs</a>
+                    
+                  
+                </div>
+            </div>
+        </div>
+     }
+</div>
