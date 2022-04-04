@@ -10,6 +10,7 @@ namespace DentalSystem.Abstractions
     {
         
         List<Doctor> GetDoctors();
+        int CountDoctors();
         Doctor GetDoctorById(int doctorId);
         List<Hour> GetHoursByDoctor(int doctorId);
         List<Examination> GetExaminationsByDoctor(int doctorId);

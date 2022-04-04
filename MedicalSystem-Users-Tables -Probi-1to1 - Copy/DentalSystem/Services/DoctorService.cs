@@ -17,6 +17,11 @@ namespace DentalSystem.Services
             _context = context;
         }
 
+        public int CountDoctors()
+        {
+            return _context.Doctors.Count();
+        }
+
         public Doctor GetDoctorById(int doctorId)
         {
             return _context.Doctors.Find(doctorId);
