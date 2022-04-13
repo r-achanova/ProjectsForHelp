@@ -30,7 +30,8 @@ namespace MoreUsersApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+             options.UseLazyLoadingProxies()
+               .UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -41,6 +42,7 @@ namespace MoreUsersApp
             services.AddControllersWithViews();
 
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IClientService, ClientService>();
 
             services.AddRazorPages();
 
